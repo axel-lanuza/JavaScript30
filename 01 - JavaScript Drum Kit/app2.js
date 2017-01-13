@@ -7,14 +7,14 @@ let DrumKitApp = (function(window, undefined) {
 
     let bindEvents = function() {
         $window.addEventListener('keydown', playSound);
-        $keys.forEach(function(key) {
+        $keys.forEach(key => {
             key.addEventListener('transitionend', removeTransition);
         });
     };
 
     let playSound = function(event) {
-        let $audio = document.querySelector('audio[data-key="' + event.keyCode + '"]'),
-            $key = document.querySelector('.key[data-key="' + event.keyCode + '"]');
+        let $audio = document.querySelector(`audio[data-key="${event.keyCode}"]`),
+            $key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
         if (!$audio) return; // stop the function from running all together
         $audio.currentTime = 0; // rewind the audio to the start
         $audio.play();
